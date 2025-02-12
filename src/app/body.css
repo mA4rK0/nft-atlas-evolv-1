@@ -1,0 +1,9 @@
+body {
+  background-image: radial-gradient(circle, #000000, #040404, #070707, #0b0b0b, #0e0e0e, #101012, #121215, #141418, #14161c, #131721, #111925, #0d1b2a);
+  font-family: "Inter", sans-serif;
+}
+
+.connect:hover {
+  background-color: #0074d9;
+  border-color: #0074d9;
+}
