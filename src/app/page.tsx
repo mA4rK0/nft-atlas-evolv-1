@@ -60,10 +60,10 @@ const Home: React.FC = (): any => {
 
   return (
     <>
-      <div className="relative">
+      <div>
         <HeaderNavbar />
         <main className="text-white">
-          <div className="mt-20 text-center font-medium text-5xl">
+          <div className="my-10 text-center font-medium text-5xl">
             <h1>
               NFT<span className="text-sky-500">A</span>t<span className="text-green-500">l</span>
               <span className="text-blue-500">a</span>
@@ -77,7 +77,7 @@ const Home: React.FC = (): any => {
               </button>
             </div>
           ) : (
-            <div className="mt-16">
+            <div>
               <p className="flex flex-wrap justify-center text-center text-lg">
                 <span className="font-semibold">Address</span> :{" "}
                 <span className="flex items-center mx-1">
