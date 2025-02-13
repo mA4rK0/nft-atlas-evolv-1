@@ -14,12 +14,12 @@ const NetworkButton: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center border border-white rounded-3xl p-1">
+    <div className="flex items-center hover:bg-hoverNavbar rounded-md p-1 transition ease-in-out duration-300">
       <button onClick={handleChevron}>
         <div className="flex items-center gap-1">
           <Image src={Coins} alt="Ethereum" width={24} height={30} />
           Sepolia
-          {isOpen ? <ChevronDown /> : <ChevronUp />}
+          {isOpen ? <ChevronUp /> : <ChevronDown />}
         </div>
       </button>
     </div>

@@ -35,30 +35,6 @@ const HeaderNavbar: React.FC = () => {
           <span onClick={handlePopOut}>
             <NetworkButton />
           </span>
-
-          {/* <ul className="flex space-x-6">
-          <li>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition duration-300">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition duration-300">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition duration-300">
-              Services
-            </a>
-          </li>
-          <li>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition duration-300">
-              Contact
-            </a>
-          </li>
-        </ul>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Sign In</button> */}
         </div>
       </nav>
       {isOpen && <PopOutNetworkNavbar />}

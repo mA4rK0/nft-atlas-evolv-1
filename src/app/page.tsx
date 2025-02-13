@@ -81,7 +81,7 @@ const Home: React.FC = (): any => {
               <p className="flex flex-wrap justify-center text-center text-lg">
                 <span className="font-semibold">Address</span> :{" "}
                 <span className="flex items-center mx-1">
-                  <Image src={Ether} alt="Ether" width={24} height={14} />
+                  <Image src={Ether} alt="Ether" width={24} height={30} />
                 </span>
                 {account}
               </p>
@@ -130,11 +130,20 @@ const Home: React.FC = (): any => {
                   </Swiper>
                 </div>
               )}
-              <div className="text-center my-10">
-                <button className="border border-red-600 rounded-3xl p-2 transition duration-300 ease-in-out hover:bg-red-600 active:bg-red-700" onClick={changeAccount}>
-                  Change Address
-                </button>
-              </div>
+              {!isLoading && (
+                <div className="flex flex-wrap justify-center gap-6 my-10">
+                  <div className="text-center">
+                    <button className="border border-red-600 rounded-3xl p-2 transition duration-300 ease-in-out hover:bg-red-600 active:bg-red-700" onClick={changeAccount}>
+                      Change Address
+                    </button>
+                  </div>
+                  <div className="text-center">
+                    <button className="border border-gray-600 rounded-3xl p-2 transition duration-300 ease-in-out hover:bg-gray-600 active:bg-gray-700" onClick={handleConnectWallet}>
+                      Refresh
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </main>
