@@ -6,7 +6,6 @@ import Coins from "../../public/coins.png";
 import Polygon from "../../public/polygon.png";
 import Arbitrum from "../../public/cryptocurrency.png";
 import { ChevronDown } from "lucide-react";
-import { ChevronUp } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const NetworkButton: React.FC = () => {
@@ -66,7 +65,7 @@ const NetworkButton: React.FC = () => {
         <div className="flex items-center gap-1">
           <Image src={imageSrc} alt="Ethereum" width={24} height={30} />
           {isName}
-          {isOpen ? <ChevronUp /> : <ChevronDown />}
+          <ChevronDown className={`transition-transform duration-400 ease-in-out transform ${isOpen ? "rotate-180" : ""}`} />
         </div>
       </button>
     </div>
