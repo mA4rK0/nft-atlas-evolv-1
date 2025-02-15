@@ -1,12 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import Ether from "../../public/coins.png";
-import { useState } from "react";
+import { useNetworkStore } from "@/global/networkStore";
+import Coins from "../../public/coins.png";
+import Polygon from "../../public/polygon.png";
+import Arbitrum from "../../public/cryptocurrency.png";
+import { useState, useEffect } from "react";
 import { connectWallet } from "@/utils/web3";
 import { WalletConnection } from "@/types/types";
 import { fetchNFTs } from "@/utils/nft";
@@ -16,6 +20,42 @@ const Home: React.FC = (): any => {
   const [account, setAccount] = useState<string | null>(null);
   const [nfts, setNfts] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [imageSrc, setImageSrc] = useState(Coins);
+  const { isNetwork } = useNetworkStore.getState();
+
+  useEffect(() => {
+    changeNetworkLogo();
+  }, [isNetwork]);
+
+  const changeNetworkLogo = () => {
+    switch (isNetwork) {
+      case "Ethereum Mainnet":
+        setImageSrc(Coins);
+        break;
+      case "Sepolia":
+        setImageSrc(Coins);
+        break;
+      case "Holesky":
+        setImageSrc(Coins);
+        break;
+      case "Polygon Mainnet":
+        setImageSrc(Polygon);
+        break;
+      case "Amoy":
+        "Amoy";
+        setImageSrc(Polygon);
+        break;
+      case "Arbitrum Mainnet":
+        setImageSrc(Arbitrum);
+        break;
+      case "Arbitrum Sepolia":
+        setImageSrc(Arbitrum);
+        break;
+      default:
+        setImageSrc(Coins);
+        break;
+    }
+  };
 
   const handleConnectWallet = async (): Promise<void> => {
     setIsLoading(true);
@@ -81,7 +121,7 @@ const Home: React.FC = (): any => {
               <p className="flex flex-wrap justify-center text-center text-lg">
                 <span className="font-semibold">Address</span> :{" "}
                 <span className="flex items-center mx-1">
-                  <Image src={Ether} alt="Ether" width={24} height={30} />
+                  <Image src={imageSrc} alt="Ether" width={24} height={30} />
                 </span>
                 {account}
               </p>
@@ -120,10 +160,12 @@ const Home: React.FC = (): any => {
                     {nfts.map((nft, index) => (
                       <SwiperSlide key={index}>
                         <div className="flex justify-center items-center h-full">
-                          <div key={index} className="relative w-[22rem] h-[22rem] border rounded-xl overflow-hidden max-w-full">
-                            <img src={nft.image.originalUrl} alt={nft.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                            <p className="absolute bottom-4 left-4 z-10 text-md font-semibold">{nft.name}</p>
-                          </div>
+                          <Link href={`/inspect/${nft.name}`}>
+                            <div key={index} className="relative w-[22rem] h-[22rem] border rounded-xl overflow-hidden max-w-full">
+                              <img src={nft.image.originalUrl} alt={nft.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" />
+                              <p className="absolute bottom-4 left-4 z-10 text-md font-semibold">{nft.name}</p>
+                            </div>
+                          </Link>
                         </div>
                       </SwiperSlide>
                     ))}
