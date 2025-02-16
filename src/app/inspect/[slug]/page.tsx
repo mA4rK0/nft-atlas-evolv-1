@@ -12,27 +12,33 @@ type Nft = {
   tokenId: string;
   tokenUri: string;
   description: string;
+  tokenType: string;
+  contract: {
+    address: string;
+  };
 };
 
 export default function Page() {
   const { slug } = useParams();
   const [theNft, setTheNft] = useState<Nft | null>(null);
-  const [address, isAddress] = useState<string | null>("");
+  const [address, isAddress] = useState<string>("");
   const [tokenType, setTokenType] = useState<string | null>("");
 
   useEffect(() => {
     try {
       const { isNft } = useNftStore.getState();
-      const theNft = isNft.find((nft: any) => nft.name === slug);
-      console.log(theNft);
-      setTheNft(theNft);
-      let first = theNft.contract.address.slice(0, 6);
-      let last = theNft.contract.address.slice(-4);
-      let disAddress = `${first}...${last}`;
-      isAddress(disAddress);
-      let firstType = theNft.tokenType.slice(0, 3);
-      let lastType = theNft.tokenType.slice(3);
-      setTokenType(`${firstType}-${lastType}`);
+      const theNft = isNft.find((nft: Nft) => nft.name === slug);
+      if (theNft) {
+        console.log(theNft);
+        setTheNft(theNft);
+        const first = theNft.contract.address.slice(0, 6);
+        const last = theNft.contract.address.slice(-4);
+        const disAddress = `${first}...${last}`;
+        isAddress(disAddress);
+        const firstType = theNft.tokenType.slice(0, 3);
+        const lastType = theNft.tokenType.slice(3);
+        setTokenType(`${firstType}-${lastType}`);
+      }
     } catch (error) {
       console.log(error);
     }

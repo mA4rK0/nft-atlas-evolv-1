@@ -17,9 +17,23 @@ import { WalletConnection } from "@/types/types";
 import { fetchNFTs } from "@/utils/nft";
 import HeaderNavbar from "@/ui/header_navbar";
 
-const Home: React.FC = (): any => {
+type Nft = {
+  name: string;
+  image: {
+    originalUrl: string;
+  };
+  tokenId: string;
+  tokenUri: string;
+  description: string;
+  tokenType: string;
+  contract: {
+    address: string;
+  };
+};
+
+const Home: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const [nfts, setNfts] = useState<any[]>([]);
+  const [nfts, setNfts] = useState<Nft[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageSrc, setImageSrc] = useState(Coins);
   const { isNetwork } = useNetworkStore.getState();
@@ -64,9 +78,9 @@ const Home: React.FC = (): any => {
     try {
       const wallet: WalletConnection | null = await connectWallet();
       if (wallet) {
-        let first = wallet.address.slice(0, 6);
-        let last = wallet.address.slice(-4);
-        let disAddress = `${first}...${last}`;
+        const first = wallet.address.slice(0, 6);
+        const last = wallet.address.slice(-4);
+        const disAddress = `${first}...${last}`;
         setAccount(disAddress);
         const nftData = await fetchNFTs(wallet.address);
         console.log("Fetched NFTs:", nftData);
@@ -97,7 +111,7 @@ const Home: React.FC = (): any => {
     }
   };
 
-  const changeAccount = (): any => {
+  const changeAccount = (): void => {
     setAccount(null);
   };
 
@@ -144,7 +158,7 @@ const Home: React.FC = (): any => {
               {!isLoading && nfts.length === 0 && (
                 <>
                   <p className="text-center font-bold text-red-600">No NFTs found</p>
-                  <p className="text-center font-bold text-red-600">Please change your wallet's address or change the network</p>
+                  <p className="text-center font-bold text-red-600">Please change your wallet&apos s address or change the network</p>
                 </>
               )}
               {!isLoading && nfts.length !== 0 && (
