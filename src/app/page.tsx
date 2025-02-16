@@ -84,7 +84,6 @@ const Home: React.FC = () => {
         const disAddress = `${first}...${last}`;
         setAccount(disAddress);
         const nftData = await fetchNFTs(wallet.address);
-        console.log("Fetched NFTs:", nftData);
         setIsNft(nftData);
         setNfts(nftData);
       }

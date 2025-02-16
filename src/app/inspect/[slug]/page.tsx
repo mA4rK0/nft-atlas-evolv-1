@@ -29,7 +29,6 @@ export default function Page() {
       const { isNft } = useNftStore.getState();
       const theNft = isNft.find((nft: Nft) => nft.name === slug);
       if (theNft) {
-        console.log(theNft);
         setTheNft(theNft);
         const first = theNft.contract.address.slice(0, 6);
         const last = theNft.contract.address.slice(-4);
@@ -39,9 +38,7 @@ export default function Page() {
         const lastType = theNft.tokenType.slice(3);
         setTokenType(`${firstType}-${lastType}`);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }, [slug]);
 
   return (
