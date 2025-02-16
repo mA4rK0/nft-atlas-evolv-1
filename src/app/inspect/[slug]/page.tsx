@@ -38,7 +38,9 @@ export default function Page() {
         const lastType = theNft.tokenType.slice(3);
         setTokenType(`${firstType}-${lastType}`);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error fetching NFT:", error);
+    }
   }, [slug]);
 
   return (
