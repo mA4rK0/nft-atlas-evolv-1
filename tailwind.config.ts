@@ -1,13 +1,16 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
         navbar: "#0d1b2a",
+        hoverNavbar: "#383838",
+        textNavbar: "#999999",
+        hoverTextNavbar: "#4A4A4A",
       },
     },
   },
