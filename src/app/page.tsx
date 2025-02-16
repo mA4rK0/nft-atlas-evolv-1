@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { useNetworkStore } from "@/global/networkStore";
+import { useNftStore } from "@/global/nftStore";
 import Coins from "../../public/coins.png";
 import Polygon from "../../public/polygon.png";
 import Arbitrum from "../../public/cryptocurrency.png";
@@ -22,6 +23,7 @@ const Home: React.FC = (): any => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageSrc, setImageSrc] = useState(Coins);
   const { isNetwork } = useNetworkStore.getState();
+  const { setIsNft } = useNftStore();
 
   useEffect(() => {
     changeNetworkLogo();
@@ -68,6 +70,7 @@ const Home: React.FC = (): any => {
         setAccount(disAddress);
         const nftData = await fetchNFTs(wallet.address);
         console.log("Fetched NFTs:", nftData);
+        setIsNft(nftData);
         setNfts(nftData);
       }
     } catch (error) {
