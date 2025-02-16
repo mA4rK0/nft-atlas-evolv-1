@@ -60,7 +60,6 @@ const Home: React.FC = () => {
         setImageSrc(Polygon);
         break;
       case "Amoy":
-        "Amoy";
         setImageSrc(Polygon);
         break;
       case "Arbitrum Mainnet":
