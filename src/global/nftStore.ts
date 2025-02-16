@@ -1,11 +1,25 @@
 import { create } from "zustand";
 
+type Nft = {
+  name: string;
+  image: {
+    originalUrl: string;
+  };
+  tokenId: string;
+  tokenUri: string;
+  description: string;
+  tokenType: string;
+  contract: {
+    address: string;
+  };
+};
+
 interface NFTState {
-  isNft: any | null;
-  setIsNft: (nft: any) => void;
+  isNft: Nft[];
+  setIsNft: (nft: Nft[]) => void;
 }
 
 export const useNftStore = create<NFTState>((set) => ({
-  isNft: null,
-  setIsNft: (nft) => set({ isNft: nft ?? null }),
+  isNft: [],
+  setIsNft: (nft: Nft[]) => set({ isNft: nft }),
 }));

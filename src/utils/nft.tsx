@@ -1,6 +1,16 @@
 import { Alchemy, Network } from "alchemy-sdk";
 import { useNetworkStore } from "@/global/networkStore";
 
+type Nft = {
+  name: string;
+  image: {
+    originalUrl: string;
+  };
+  tokenId: string;
+  tokenUri: string;
+  description: string;
+};
+
 const getAlchemyNetwork = (networkName: string | null): Network => {
   switch (networkName) {
     case "Ethereum Mainnet":
@@ -22,7 +32,7 @@ const getAlchemyNetwork = (networkName: string | null): Network => {
   }
 };
 
-export const fetchNFTs = async (address: string): Promise<any> => {
+export const fetchNFTs = async (address: string): Promise<Nft[]> => {
   const { isNetwork } = useNetworkStore.getState();
   const alchemyNetwork = getAlchemyNetwork(isNetwork);
 
@@ -36,7 +46,7 @@ export const fetchNFTs = async (address: string): Promise<any> => {
     const nfts = await alchemy.nft.getNftsForOwner(address);
     console.log(nfts);
     const nftList = nfts["ownedNfts"];
-    return nftList;
+    return nftList as Nft[];
   } catch (error) {
     console.error("Error fetching NFTs:", error);
     return [];
