@@ -22,6 +22,7 @@ type Nft = {
   image: {
     originalUrl: string;
   };
+  originalUrl: string;
   tokenId: string;
   tokenUri: string;
   description: string;
@@ -29,6 +30,7 @@ type Nft = {
   contract: {
     address: string;
   };
+  address: string;
 };
 
 const Home: React.FC = () => {

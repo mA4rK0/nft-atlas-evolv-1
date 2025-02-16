@@ -10,7 +10,6 @@ declare global {
 export const connectWallet = async (): Promise<WalletConnection | null> => {
   if (window.ethereum) {
     try {
-      // Ask users for permission to access their accounts
       await window.ethereum.request({ method: "eth_requestAccounts" });
 
       const provider = new ethers.BrowserProvider(window.ethereum);
