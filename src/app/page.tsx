@@ -101,7 +101,7 @@ const Home: React.FC = () => {
         return 1;
       } else if (nfts.length === 2) {
         return 2;
-      } else if ((nfts.length === 3 || nfts.length === 4) && window.innerWidth >= 640 && window.innerWidth < 1024) {
+      } else if ((nfts.length === 3 || nfts.length >= 4) && window.innerWidth >= 640 && window.innerWidth < 1024) {
         return 2;
       } else if (nfts.length === 3) {
         return 3;
