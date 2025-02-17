@@ -47,12 +47,9 @@ export default function Page() {
     <div className="w-full min-h-screen flex items-center justify-center bg-gray-900">
       {theNft && (
         <div className="flex flex-wrap w-full max-w-7xl text-white bg-hoverNavbar p-6 sm:p-8 rounded-lg shadow-lg">
-          {/* Gambar NFT */}
           <div className="relative w-full sm:w-[22rem] h-[22rem] sm:h-[22rem] border bg-black rounded-xl overflow-hidden">
             <img src={theNft.image.originalUrl} alt={theNft.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
           </div>
-
-          {/* Detail NFT */}
           <div className="flex flex-col w-full sm:w-[40rem] mt-6 sm:mt-0 sm:ml-8">
             <div>
               <p className="text-3xl sm:text-4xl font-medium text-white">{theNft.name}</p>
